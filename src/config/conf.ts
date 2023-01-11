@@ -9,7 +9,8 @@ export const config = {
   // server: 'localhost',
   database: process.env.DB_NAME || "",
   options: {
-    trustedConnection: false,
+    trustedConnection: true,
+    encrypt: true
   },
   pool: { max: 200, min: 0, idleTimeoutMillis: 10000 },
 };

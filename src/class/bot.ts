@@ -15,7 +15,7 @@ class Bot {
     //public taskList: Array<IMessage>;
     //public queueUsers: Array<any>;
     constructor() {
-        /* FOR LINUX */
+        /* FOR LINUX 
         console.log('Inicia la clase bot');
         this.client = new Client({
             authStrategy: new NoAuth(), 
@@ -29,13 +29,23 @@ class Bot {
                   '--disable-setuid-sandbox'
                 ]
             }
-        });
-        /* FOR WINDOWS
+        }); */
+        
+        /* FOR WINDOWS OR MACOS */
+        
         this.client = new Client({
-            authStrategy: new LocalAuth()
+            authStrategy: new NoAuth(),
+            puppeteer: {
+                headless: true,
+                product: "chrome",
+                args: [
+                  '--use-gl=egl',
+                  '--no-sandbox',
+                  '--disable-setuid-sandbox'
+                ]
+            }
         });
         
-        */
         //this.taskList = [];
         // this.queueUsers = [];
     }
