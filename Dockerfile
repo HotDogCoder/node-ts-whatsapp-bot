@@ -1,4 +1,4 @@
-FROM osrf/ubuntu_arm64:jammy
+FROM amd64/node
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -8,8 +8,8 @@ RUN apt-get install -y build-essential libssl-dev
 RUN apt-get install -y wget gnupg curl
 
 # RUN curl -sL https://deb.nodesource.com/setup_14.x
-RUN apt-get install -y nodejs
-RUN apt-get install -y npm
+# RUN apt-get install -y nodejs
+# RUN apt-get install -y npm
 
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
 RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' 
@@ -18,8 +18,8 @@ RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable 
 # RUN rm -rf /var/lib/apt/lists/*
 # RUN apt-get update 
 RUN apt-get install -y libnss3 --no-install-recommends 
-RUN apt-get update 
-RUN apt-get install -y chromium-browser --no-install-recommends
+# RUN apt-get update 
+# RUN apt-get install -y chromium-browser --no-install-recommends
 RUN apt-get install -y gconf-service --no-install-recommends
 RUN apt-get install -y libgbm-dev --no-install-recommends
 RUN apt-get install -y libasound2 --no-install-recommends
@@ -69,8 +69,8 @@ RUN apt-get update
 # RUN apt-get install -y fonts-freefont-ttf --no-install-recommends
 # RUN apt-get install -y libasound2:amd64
 
-# RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-# RUN apt-get install ./google-chrome-stable_current_amd64.deb
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN apt-get install ./google-chrome-stable_current_amd64.deb -y
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -81,7 +81,7 @@ RUN npm install -g typescript
 
 RUN npm install
 
-# RUN npm run build
+RUN npm run build
 # If you are building your code for production
 # RUN npm ci --only=production
 
