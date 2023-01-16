@@ -25,6 +25,22 @@ class Upload {
             })
         }
     }
+
+    public upload_excel_qa(req: Request, res: Response) {
+        //res.send('Server online')
+        //req.files
+        var paths:any[] = [];
+        if(req.file){
+            res.status(200).json({
+                ok: true,
+                paths: (req.file as Express.Multer.File).path
+            })
+        } else {
+            res.status(500).json({
+                ok: false
+            })
+        }
+    }
 }
 
 const main = new Upload()
