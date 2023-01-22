@@ -1,4 +1,4 @@
-import { Client, MessageMedia, ClientSession, ClientOptions, Chat, GroupChat, LocalAuth, Buttons, PrivateChat, List, NoAuth } from "whatsapp-web.js";
+import { Client, MessageMedia, ClientSession, ClientOptions, Chat, GroupChat, LocalAuth, Buttons, PrivateChat, List, NoAuth, LegacySessionAuth } from "whatsapp-web.js";
 import qrcode from "qrcode-terminal";
 import ora from "ora";
 import chalk from "chalk";
@@ -15,7 +15,7 @@ class Bot {
     //public taskList: Array<IMessage>;
     //public queueUsers: Array<any>;
     constructor() {
-        /* FOR LINUX 
+        /* FOR LINUX */
         console.log('Inicia la clase bot');
         this.client = new Client({
             authStrategy: new NoAuth(), 
@@ -24,14 +24,12 @@ class Bot {
                 product: "chrome", 
                 executablePath: "/usr/bin/chromium-browser",
                 args: [
-                  '--use-gl=egl',
-                  '--no-sandbox',
-                  '--disable-setuid-sandbox'
+                    '--use-gl=egl', '--no-sandbox', '--disable-setuid-sandbox', '--disable-extensions'
                 ]
             }
-        }); */
+        }); 
         
-        /* FOR WINDOWS OR MACOS */
+        /* FOR WINDOWS OR MACOS 
         
         this.client = new Client({
             authStrategy: new NoAuth(),
@@ -44,7 +42,7 @@ class Bot {
                   '--disable-setuid-sandbox'
                 ]
             }
-        });
+        });*/
         
         //this.taskList = [];
         // this.queueUsers = [];
