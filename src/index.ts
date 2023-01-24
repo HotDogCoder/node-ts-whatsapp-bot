@@ -24,7 +24,7 @@ class Server {
 
         //cors
         this.app.use(cors({
-            origin: "https://www.acidjelly.com",
+            origin: "*",
             methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
             allowedHeaders: "Content-Type,Authorization"
         }));
