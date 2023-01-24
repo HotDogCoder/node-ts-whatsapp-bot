@@ -23,8 +23,8 @@ class Server {
         this.app.set("port", process.env.PORT || 8000)
 
         const white_list = [
-            "www.chatbot.acidjelly.com",
-            "chatbot.acidjelly.com"
+            "www.acidjelly.com",
+            "acidjelly.com"
         ]
 
         //cors
