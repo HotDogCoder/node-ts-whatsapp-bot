@@ -4,6 +4,7 @@ import { mainRoute, appointmentRoute, whatsAppRoute, queueRoute, uploadRoute } f
 import { scheduller } from "./class/schedulers";
 import { bot } from "./class/bot";
 import dotenv from "dotenv";
+import cors from 'cors';
 dotenv.config({
     path: path.resolve(__dirname, '../.env')
 })
@@ -20,6 +21,13 @@ class Server {
     config(): void {
         //settings
         this.app.set("port", process.env.PORT || 8000)
+
+        //cors
+        this.app.use(cors({
+            origin: "https://www.acidjelly.com",
+            methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+            allowedHeaders: "Content-Type,Authorization"
+        }));
 
         //midlewares
         this.app.use(express.json({limit: '50mb'}));
