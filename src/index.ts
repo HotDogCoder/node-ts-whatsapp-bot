@@ -22,9 +22,14 @@ class Server {
         //settings
         this.app.set("port", process.env.PORT || 8000)
 
+        const white_list = [
+            "www.chatbot.acidjelly.com",
+            "chatbot.acidjelly.com"
+        ]
+
         //cors
         this.app.use(cors({
-            origin: "*",
+            origin: white_list,
             methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
             allowedHeaders: "Content-Type,Authorization"
         }));
