@@ -325,6 +325,66 @@ class Bot {
         }
         
     }
+
+    contact = async (number: string, text: string, idMessage?: number, photo?: string) => {
+        // let list = new List(text, "Instrucciones", [{
+        //     title: "Cita con Nutricionista",
+        //     rows: [{
+        //         id:'button_tutorial', 
+        //         title:'Ver tutorial ⏯️📹', 
+        //         description: 'Te mostraremos un video con los pasos a seguir'
+        //     },{
+        //         id:'button_frecuently', 
+        //         title:'Preguntas frecuentes ⁉️'
+        //     }]
+        // }]);
+
+        //this.client.sendMessage(number, list)
+        //var media = null;
+        if(photo){
+
+            const media = await MessageMedia.fromUrl(photo, {unsafeMime: true});
+            this.client.sendMessage(number, text, {
+                
+                media: media
+            })
+            .then(res => {
+                console.log('mensaje enviado', res.id)
+                if (!idMessage) return
+                /*Si tiene un ID de mensaje actualiza el estado en BD*/
+                let params = [{ 
+                    ID_MESSAGE: idMessage,
+                    IDENTIFIER: res.id.id,
+                    METADATA: JSON.stringify({
+                        ...res
+                    })
+                }];
+                // DB.exec(params, SP.APPOINTMENT.SP_APPOINTMENT_NOTIFICATION_SCHEDULER_UPDATE)
+            })
+            .catch(error=>{
+                console.log('error de envio', error)
+            })
+        } else {
+            this.client.sendMessage(number, text)
+            .then(res => {
+                console.log('mensaje enviado', res.id)
+                if (!idMessage) return
+                /*Si tiene un ID de mensaje actualiza el estado en BD*/
+                let params = [{ 
+                    ID_MESSAGE: idMessage,
+                    IDENTIFIER: res.id.id,
+                    METADATA: JSON.stringify({
+                        ...res
+                    })
+                }];
+                // DB.exec(params, SP.APPOINTMENT.SP_APPOINTMENT_NOTIFICATION_SCHEDULER_UPDATE)
+            })
+            .catch(error=>{
+                console.log('error de envio', error)
+            })
+        }
+        
+    }
     
 
     // getChats = () => {
