@@ -22,17 +22,18 @@ class Server {
         //settings
         this.app.set("port", process.env.PORT || 8000)
 
-        const white_list = [
-            "www.acidjelly.com",
-            "acidjelly.com"
-        ]
+        // const white_list = [
+        //     "www.acidjelly.com",
+        //     "acidjelly.com"
+        // ]
 
-        //cors
-        this.app.use(cors({
-            origin: white_list,
-            methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-            allowedHeaders: "Content-Type,Authorization"
-        }));
+        // //cors
+        // this.app.use(cors({
+        //     origin: white_list,
+        //     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+        //     allowedHeaders: "Content-Type,Authorization"
+        // }));
+        this.app.use(cors())
 
         //midlewares
         this.app.use(express.json({limit: '50mb'}));
