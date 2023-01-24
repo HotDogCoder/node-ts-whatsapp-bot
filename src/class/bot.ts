@@ -29,20 +29,20 @@ class Bot {
             }
         }); 
         
-        /* FOR WINDOWS OR MACOS 
+        //FOR WINDOWS OR MACOS 
         
-        this.client = new Client({
-            authStrategy: new NoAuth(),
-            puppeteer: {
-                headless: true,
-                product: "chrome",
-                args: [
-                  '--use-gl=egl',
-                  '--no-sandbox',
-                  '--disable-setuid-sandbox'
-                ]
-            }
-        });*/
+        // this.client = new Client({
+        //     authStrategy: new NoAuth(),
+        //     puppeteer: {
+        //         headless: true,
+        //         product: "chrome",
+        //         args: [
+        //           '--use-gl=egl',
+        //           '--no-sandbox',
+        //           '--disable-setuid-sandbox'
+        //         ]
+        //     }
+        // });
         
         //this.taskList = [];
         // this.queueUsers = [];

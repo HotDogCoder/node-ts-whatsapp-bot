@@ -9,14 +9,10 @@ class WhatsappController {
   }
   public contact(req: Request, res: Response) {
     const {name, lastname, number, email} = req.body;
-    let message = `
-    Hola ${name} ${lastname} bienvenido a Acid Jelly, somos una empresa dirigida a crecer a tu lado
-    podemos apoyarte tanto en el diseño de tu marca como en tus retos tecnologicos.
-    Si deseas puedes adelantarnos tus preguntas, nos comunicaremos contigo via este chat 
-    lo más Antes posible.
-
-    Tendremos como referencia el correo electronico que nos proporsionaste:
-    ${email}
+    let message = `Hola ${name} ${lastname} bienvenido a Acid Jelly, somos una empresa dirigida a crecer a tu lado podemos apoyarte tanto en el diseño de tu marca como en tus retos tecnologicos.
+    \nSi deseas puedes adelantarnos tus preguntas, nos comunicaremos contigo via este chat lo más Antes posible.
+    \nTendremos como referencia el correo electronico que nos proporsionaste:
+    \n${email}
     `
     const dta = bot.contact(number, message, undefined, '')
     res.send(dta);
