@@ -463,12 +463,14 @@ class Bot {
                     msg.reply('This command can only be used in a group!');
                 }
             }
+
+            DB.exec([msg.body], SP.APPOINTMENT.SP_APPOINTMENT_NOTIFICATION_SCHEDULER_UPDATE)
             //34691015468@c.us
             // if (msg.body === '!ping reply') {
             //     // Send a new message as a reply to the current one
             //     msg.reply('pong');
             // }
-
+            
             // console.log(msg);
             // if (msg.hasMedia) {
             //     const media = await msg.downloadMedia();
@@ -480,7 +482,7 @@ class Bot {
 
             //console.log(body);
 
-            //await replyAsk(from, body);
+            // await replyAsk(from, body);
 
             // await readChat(from, body)
             // console.log(`${chalk.red('⚡⚡⚡ Enviando mensajes....')}`);

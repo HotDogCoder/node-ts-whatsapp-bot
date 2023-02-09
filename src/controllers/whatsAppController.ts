@@ -7,6 +7,11 @@ class WhatsappController {
     const dta = bot.sendMessage(number, message, undefined, photo)
     res.send(dta);
   }
+  public getReport(req: Request, res: Response) {
+    const {message, number, photo} = req.body;
+    const dta = bot.sendMessage(number, message, undefined, photo)
+    res.send(dta);
+  }
   public contact(req: Request, res: Response) {
     const {name, lastname, number, email} = req.body;
     let message = `Hola ${name} ${lastname} bienvenido a Acid Jelly, somos una empresa dirigida a crecer a tu lado podemos apoyarte tanto en el diseño de tu marca como en tus retos tecnologicos.
